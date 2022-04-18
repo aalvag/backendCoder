@@ -1,47 +1,43 @@
-class usuario {
-    constructor(nombre, apellido) {
+class Usuario {
+    constructor(nombre, apellido, libros, mascotas) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.mascotas = [];
-        this.libros = [];
+        this.libros = libros;
+        this.mascotas = mascotas;
     }
-
 
     getFullName() {
-        return console.log("Su nombre es:" + this.nombre + "" + this.apellido);
+        return console.log("Su nombre es " + this.nombre + " " + this.apellido);
+
     }
 
-    addMascotas(mascotas) {
-        return this.mascotas.push(mascotas);
+    addMascota(a) {
+        this.mascotas.push(a);
     }
 
     countMascotas() {
-        return this.mascotas.length;
+        return console.log(this.mascotas.length);
     }
-
-    addBook(nombre, autor) {
-        return this.libros.push(`{nombre: ${nombre}, autor: ${autor}`);
+    addBook(book, autor) {
+        this.libros.push({ nombre: book, autor: autor })
     }
-
     getBookNames() {
-        this.libros.map((libro) => {
-            return libro.nombre;
-        });
+        for (var i = 0; i < this.libros.length; i++) {
+            console.log(this.libros[i]["nombre"]);
+        }
     }
 }
 
-let referencia = new usuario("Lucas", "Poma");
-let referencia2 = new usuario("Mariana", "Gomez");
-let referencia3 = new usuario();
-let referencia4 = new usuario();
+let p1 = new Usuario("Lucas", "Poma", [{ nombre: "a", autor: "b" }], ["Aquiles"])
 
-referencia.getFullName();
-referencia2.getFullName();
-referencia3.addMascotas("gato")
-referencia3.addMascotas("perro")
+p1.getFullName()
+p1.addMascota("Mia")
+p1.countMascotas()
+p1.addBook("La Herencia", "John Grisham")
+p1.addBook("El Principito", "Antoine de Saint-Exupéry")
 
-console.log(`La cantidad de mascotas es de ${referencia3.countMascotas()} `);
+console.table(p1.libros)
+console.log(p1.libros)
+console.log(p1.libros[1]["nombre"])
 
-referencia4.addBook("La Herencia", "John Grisham");
-
-console.log(`Libro: ${referencia4.getBookNames()}`);
+p1.getBookNames()
