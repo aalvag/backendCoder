@@ -8,7 +8,7 @@ class Usuario {
 
     getFullName() {
         return console.log("Su nombre es " + this.nombre + " " + this.apellido);
-
+// template string
     }
 
     addMascota(a) {
